@@ -84,10 +84,10 @@ let main = document.querySelector('.main-modal-cont');
 
 let textarea = document.querySelector('.text-cont');
 
-//creating ticket after pressing shift btn
+//creating ticket after pressing enter btn
 main.addEventListener('keydown', function (e) {
 
-  if ((e.key) == 'Shift') {
+  if ((e.key) == 'Enter') {
     generateTicket(prioritycolor, textarea.value);
     main.style.display = 'none';
     flag = true;
