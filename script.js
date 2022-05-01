@@ -109,19 +109,21 @@ function generateTicket(color, text, ticketid) {
 
   div.setAttribute('class', 'main-ticket');
 
-  div.innerHTML = `<div class="main-ticket">
+  div.innerHTML =`<div class="main-ticket">
 <div class="ticket-color ${color}">
 </div>
 <div class="ticket-id">
+    <div>
      #${id}
-</div>
-<div class="ticket-body">
-  ${text}
-  <div class="lock-icon">
+     </div>
+     <div class="lock-icon">
     <i class="fa-solid fa-lock"></i>
   </div>
 </div>
-</div>`;
+<textarea  class="ticket-body" spellcheck="false"  maxlength="455" disabled>
+${text}
+</textarea>
+</div>` ;
 
   ticketCont.appendChild(div);
   removehandler(div,id);
@@ -196,7 +198,7 @@ function handlelock(ticket,id) {
   let lockicon1 = lockicon.children[0];
 
   let Tickettext = ticket.querySelector('.ticket-body');
-
+  let temp=false;
   let lock = 'fa-lock';
   let unlock = 'fa-lock-open';
   lockicon1.addEventListener('click', function () {
@@ -204,14 +206,23 @@ function handlelock(ticket,id) {
       lockicon1.classList.remove(lock);
       lockicon1.classList.add(unlock);
       Tickettext.setAttribute("contenteditable", "true");
+       Tickettext.disabled=false;
+      temp=true;
     }
     else {
       lockicon1.classList.remove(unlock);
       lockicon1.classList.add(lock);
       Tickettext.setAttribute("contenteditable", "false");
+       Tickettext.disabled=true;
     }
+    
+    if(temp==true){
+      alert("Now, you can edit your task")   /**/
+      temp=false;
+    }
+    
     let idx=getTicketIdx(id);
-    ticketArr[idx].text=Tickettext.innerText;
+    ticketArr[idx].text=Tickettext.value;
      //update localstorage
      localStorage.setItem('tickets',JSON.stringify(ticketArr));
 
