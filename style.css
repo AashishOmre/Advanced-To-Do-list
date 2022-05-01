@@ -151,6 +151,7 @@ body {
 .ticket-id{
     height: 2rem;
     background-color: grey;
+    justify-content: space-between; 
     color: white;
     font-weight: 500;
     padding-top: 3px; 
