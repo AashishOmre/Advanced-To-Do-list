@@ -208,6 +208,10 @@ body {
         margin-bottom: 2rem; /* */
     }
 
+    .ticket-cont{
+        gap:0px;
+    }
+    
     .priority-color-cont {
         height: 25%;
         width: 100%;
